@@ -1,0 +1,12 @@
+Gravity-Torque Momentum Management for a Three-Wheel Reaction-Wheel Inverted Pendulum
+Copyright (c) 2026 Jose Luis Segundo Manayay
+
+Original code and data in this repository are released under the MIT License (see LICENSE).
+
+Third-party components:
+
+  paper/IEEEtran_doi.bst                            derived from IEEEtran.bst (IEEE, LaTeX Project
+                                                    Public License), DOI links added
+  NumPy, SciPy, Matplotlib, pandas, OSQP, pytest    installed from requirements.txt, own licences
+
+The banner in assets/ is artwork of the authors and is not part of the scientific results.

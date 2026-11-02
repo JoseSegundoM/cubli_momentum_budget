@@ -1,0 +1,62 @@
+\documentclass[conference]{IEEEtran}
+\usepackage{booktabs,amsmath}
+\begin{document}
+\title{Supplementary Material: Gravity-Torque Momentum Management for a Three-Wheel Reaction-Wheel Inverted Pendulum}
+\author{\IEEEauthorblockN{Jose Luis Segundo Manayay, Javier Yanpier Garay Yovera, Francisco Jes\'us Rodr\'iguez Huiman}\IEEEauthorblockA{Universidad Nacional de Ingenier\'ia (UNI), Faculty of Mechanical Engineering, Lima, Peru}}
+\maketitle
+\section*{S1. Plant parameters (nominal design point)}
+\begin{table}[h]\centering\footnotesize\input{table_params}\end{table}
+The wheels are idealised discs whose rim reaches the seat distance ($r/d=1$); a real wheel of finite thickness would have to be smaller. The Monte Carlo samples the fill ratio $r/d$ with $\pm20\%$ and caps it at 0.95, so most perturbed plants sit at the cap and have a smaller momentum budget than the nominal one.
+\section*{S2. Tuned gains}
+Gains of the paper (Table~I), tuned with the cost of Sec.~IV-H, and of the survival-first re-tuning reported in Sec.~VI-D. LQR/MPC: state weights $q_\theta,q_\omega,q_h$ and input weight $r$; FBL+LQR: outer-loop weights; SMC: $\Lambda$, $K$, boundary layer $\phi$; backstepping: $k_1,k_2$ ($\Gamma=I$, not tuned); PID: $k_p,k_i,k_d$. MPC: 25 steps of 40~ms, updates every 20~ms, OSQP. Momentum-management tilt clamp: 3$^\circ$.
+\begin{table}[h]\centering\scriptsize
+\caption{Gains used in the paper}
+\begin{tabular}{@{}llp{0.52\columnwidth}@{}}
+\toprule
+Controller & Variant & Gains \\
+\midrule
+LQR & classical & \texttt{q\_att}$=42.39$, \texttt{q\_rate}$=0.00436$, \texttt{q\_mom}$=1.712$, \texttt{r}$=1.008$ \\
+MPC & classical & \texttt{q\_att}$=7722$, \texttt{q\_rate}$=41.9$, \texttt{q\_mom}$=189$, \texttt{r}$=1$ \\
+FBL+LQR & classical & \texttt{q\_att}$=4.249\times10^{6}$, \texttt{q\_rate}$=60.9$, \texttt{r}$=0.9978$ \\
+SMC & classical & \texttt{lam}$=16.52$, \texttt{k\_reach}$=58.1$, \texttt{phi}$=0.4218$ \\
+Backstepping & classical & \texttt{k1}$=27.36$, \texttt{k2}$=2.706$ \\
+PID & classical & \texttt{kp}$=122.1$, \texttt{ki}$=9.725$, \texttt{kd}$=5.834$ \\
+LQR & momentum aware & \texttt{q\_att}$=42.39$, \texttt{q\_rate}$=0.00436$, \texttt{q\_mom}$=1.712$, \texttt{r}$=1.008$; $k_h=0.002081$ \\
+FBL+LQR & momentum aware & \texttt{q\_att}$=4.249\times10^{6}$, \texttt{q\_rate}$=60.9$, \texttt{r}$=0.9978$; $k_h=0.1589$ \\
+SMC & momentum aware & \texttt{lam}$=16.52$, \texttt{k\_reach}$=58.1$, \texttt{phi}$=0.4218$; $k_h=0.2293$ \\
+Backstepping & momentum aware & \texttt{k1}$=27.36$, \texttt{k2}$=2.706$; $k_h=0.1775$ \\
+PID & momentum aware & \texttt{kp}$=122.1$, \texttt{ki}$=9.725$, \texttt{kd}$=5.834$; $k_h=0.2592$ \\
+LQR & integral & \texttt{q\_att}$=42.39$, \texttt{q\_rate}$=0.00436$, \texttt{q\_mom}$=1.712$, \texttt{r}$=1.008$; $K_i=0.7547$ \\
+FBL+LQR & integral & \texttt{q\_att}$=4.249\times10^{6}$, \texttt{q\_rate}$=60.9$, \texttt{r}$=0.9978$; $K_i=0.3198$ \\
+SMC & integral & \texttt{lam}$=16.52$, \texttt{k\_reach}$=58.1$, \texttt{phi}$=0.4218$; $K_i=0.1637$ \\
+Backstepping & integral & \texttt{k1}$=27.36$, \texttt{k2}$=2.706$; $K_i=49.36$ \\
+PID & integral & no separate arm: identical to the classical PID ($K_i$ unused) \\
+\bottomrule
+\end{tabular}
+\end{table}
+\begin{table}[h]\centering\scriptsize
+\caption{Gains of the survival-first re-tuning}
+\begin{tabular}{@{}llp{0.52\columnwidth}@{}}
+\toprule
+Controller & Variant & Gains \\
+\midrule
+LQR & classical & \texttt{q\_att}$=88.12$, \texttt{q\_rate}$=0.07368$, \texttt{q\_mom}$=1.624$, \texttt{r}$=1.01$ \\
+MPC & classical & \texttt{q\_att}$=7722$, \texttt{q\_rate}$=41.9$, \texttt{q\_mom}$=189$, \texttt{r}$=1$ \\
+FBL+LQR & classical & \texttt{q\_att}$=3.218\times10^{5}$, \texttt{q\_rate}$=996.6$, \texttt{r}$=0.9988$ \\
+SMC & classical & \texttt{lam}$=18.91$, \texttt{k\_reach}$=11.88$, \texttt{phi}$=0.337$ \\
+Backstepping & classical & \texttt{k1}$=30.17$, \texttt{k2}$=0.582$ \\
+PID & classical & \texttt{kp}$=19.96$, \texttt{ki}$=10.9$, \texttt{kd}$=1.583$ \\
+LQR & momentum aware & \texttt{q\_att}$=88.12$, \texttt{q\_rate}$=0.07368$, \texttt{q\_mom}$=1.624$, \texttt{r}$=1.01$; $k_h=0.02769$ \\
+FBL+LQR & momentum aware & \texttt{q\_att}$=3.218\times10^{5}$, \texttt{q\_rate}$=996.6$, \texttt{r}$=0.9988$; $k_h=0.2563$ \\
+SMC & momentum aware & \texttt{lam}$=18.91$, \texttt{k\_reach}$=11.88$, \texttt{phi}$=0.337$; $k_h=0.2585$ \\
+Backstepping & momentum aware & \texttt{k1}$=30.17$, \texttt{k2}$=0.582$; $k_h=0.2869$ \\
+PID & momentum aware & \texttt{kp}$=19.96$, \texttt{ki}$=10.9$, \texttt{kd}$=1.583$; $k_h=0.2855$ \\
+LQR & integral & \texttt{q\_att}$=88.12$, \texttt{q\_rate}$=0.07368$, \texttt{q\_mom}$=1.624$, \texttt{r}$=1.01$; $K_i=0.6531$ \\
+FBL+LQR & integral & \texttt{q\_att}$=3.218\times10^{5}$, \texttt{q\_rate}$=996.6$, \texttt{r}$=0.9988$; $K_i=0.0165$ \\
+SMC & integral & \texttt{lam}$=18.91$, \texttt{k\_reach}$=11.88$, \texttt{phi}$=0.337$; $K_i=0.02561$ \\
+Backstepping & integral & \texttt{k1}$=30.17$, \texttt{k2}$=0.582$; $K_i=0.02738$ \\
+PID & integral & no separate arm: identical to the classical PID ($K_i$ unused) \\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{document}

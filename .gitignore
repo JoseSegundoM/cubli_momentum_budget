@@ -1,0 +1,20 @@
+__pycache__/
+*.pyc
+.venv/
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.blg
+paper/*.bbl
+paper/preview_*.png
+paper/figures/
+
+# PDF profiles and LaTeX build outputs
+paper/paper_223_*.pdf
+paper/*.toc
+build/
+results/tuning.log
+paper/main.pdf
+results/table_main.md
+paper/supplement.aux
+paper/supplement.log

@@ -1,0 +1,9 @@
+# Keep GitHub's language statistics about the actual source
+results/**   linguist-generated=true
+figures/**   linguist-generated=true
+assets/**    linguist-generated=true
+paper/**     linguist-documentation=true
+docs/**      linguist-documentation=true
+*.pdf        binary
+*.mp4        binary
+*.gif        binary

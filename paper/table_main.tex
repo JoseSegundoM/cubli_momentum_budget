@@ -1,0 +1,20 @@
+\setlength{\tabcolsep}{3.0pt}
+\begin{tabular}{@{}llrrrcr@{}}
+\toprule
+& & \multicolumn{2}{c}{Nominal} & \multicolumn{3}{c}{Monte-Carlo} \\
+\cmidrule(lr){3-4}\cmidrule(l){5-7}
+Controller & Var. & $t_s$ [s] & $\int\|\tau\|^2$ & bal.\ [\%] & 95\,\% CI & IAE$^\dagger$ \\
+\midrule
+LQR & cl. & 0.08 & 0.010 & 99.3 & [96, 100] & 5.7 \\
+LQR & MM & 0.08 & 0.010 & 100.0 & [97, 100] & 5.8 \\
+MPC & cl. & 0.08 & 0.015 & 96.7 & [92, 99] & 5.2 \\
+FBL+LQR & cl. & 0.06 & 0.102 & 36.0 & [28, 44] & 0.3 \\
+FBL+LQR & MM & 0.06 & 0.105 & 82.0 & [75, 88] & 3.4 \\
+SMC & cl. & 0.06 & 0.100 & 36.0 & [28, 44] & 0.4 \\
+SMC & MM & 0.06 & 0.100 & 94.0 & [88, 97] & 4.7 \\
+Backstepping & cl. & 0.06 & 0.131 & 34.7 & [27, 43] & 0.3 \\
+Backstepping & MM & 0.06 & 0.131 & 85.3 & [78, 91] & 3.8 \\
+PID & cl. & 0.06 & 0.243 & 33.3 & [26, 42] & 0.5 \\
+PID & MM & 0.06 & 0.242 & 96.7 & [92, 99] & 5.1 \\
+\bottomrule
+\end{tabular}
